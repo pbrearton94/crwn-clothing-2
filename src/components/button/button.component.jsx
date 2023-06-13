@@ -12,10 +12,13 @@ const BUTTON_TYPE_CLASSES = {
  * @param {children} children are the different types of buttons
  * @returns
  */
-const Button = ({ children, buttonType }) => {
+const Button = ({ children, buttonType, ...otherProps }) => {
   return (
     <>
-      <button className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}>
+      <button
+        className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
+        {...otherProps}
+      >
         {children}
       </button>
     </>

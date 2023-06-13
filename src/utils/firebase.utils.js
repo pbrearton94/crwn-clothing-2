@@ -5,17 +5,13 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
+  signOut,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-
-// TODO: Add SDKs for Firebase products that you want to use
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 
 const firebaseConfig = {
   apiKey: "AIzaSyDOwEy5wouGLUhD7BQrV9mO4LBu9fVBKy4",
@@ -27,7 +23,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-
 const app = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
@@ -81,4 +76,13 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     return;
   }
   return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => {
+  if (!callback) {
+    return;
+  }
+  onAuthStateChanged(auth, callback);
 };

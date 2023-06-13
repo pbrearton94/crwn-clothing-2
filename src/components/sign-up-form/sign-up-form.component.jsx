@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -6,6 +6,7 @@ import {
 import FormInput from "../form-input/form-input.component";
 import "./sign-up-form.styles.scss";
 import Button from "../button/button.component";
+import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   displayName: "",
@@ -17,6 +18,8 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  // const val = useContext(UserContext);
+  //const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -33,6 +36,7 @@ const SignUpForm = () => {
         email,
         password
       );
+      //setCurrentUser(user);
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
@@ -52,63 +56,59 @@ const SignUpForm = () => {
   };
 
   return (
-    <>
-      <div className="sign-up-container">
-        <h2>Don't have an account?</h2>
-        <span>Sign up with your email and password</span>
-        <form
-          action="
+    <div className="sign-up-container">
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
+      <form
+        action="
         "
-          onSubmit={(event) => {
-            handleSubmit(event);
+        onSubmit={handleSubmit}
+      >
+        <FormInput
+          label="Display Name"
+          inputOptions={{
+            type: "text",
+            required: true,
+            onChange: handleChange,
+            name: "displayName",
+            value: displayName,
           }}
-        >
-          <FormInput
-            label="Display Name"
-            inputOptions={{
-              type: "text",
-              required: true,
-              onChange: handleChange,
-              name: "displayName",
-              value: displayName,
-            }}
-          />
-          <FormInput
-            label="Email"
-            inputOptions={{
-              type: "email",
-              required: true,
-              onChange: handleChange,
-              name: "email",
-              value: email,
-            }}
-          />
-          <FormInput
-            label="Password"
-            inputOptions={{
-              type: "password",
-              required: true,
-              onChange: handleChange,
-              name: "password",
-              value: password,
-            }}
-          />
-          <FormInput
-            label="Confirm Password"
-            inputOptions={{
-              type: "password",
-              required: true,
-              onChange: handleChange,
-              name: "confirmPassword",
-              value: confirmPassword,
-            }}
-          />
-          <Button buttonType="default" type="submit">
-            Sign Up
-          </Button>
-        </form>
-      </div>
-    </>
+        />
+        <FormInput
+          label="Email"
+          inputOptions={{
+            type: "email",
+            required: true,
+            onChange: handleChange,
+            name: "email",
+            value: email,
+          }}
+        />
+        <FormInput
+          label="Password"
+          inputOptions={{
+            type: "password",
+            required: true,
+            onChange: handleChange,
+            name: "password",
+            value: password,
+          }}
+        />
+        <FormInput
+          label="Confirm Password"
+          inputOptions={{
+            type: "password",
+            required: true,
+            onChange: handleChange,
+            name: "confirmPassword",
+            value: confirmPassword,
+          }}
+        />
+        <Button buttonType="default" type="submit">
+          Sign Up
+        </Button>
+      </form>
+    </div>
   );
 };
 
