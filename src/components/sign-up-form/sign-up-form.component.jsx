@@ -56,59 +56,61 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <h2>Don't have an account?</h2>
-      <span>Sign up with your email and password</span>
-      <form
-        action="
+    <>
+      <div className="sign-up-container">
+        <h2>Don't have an account?</h2>
+        <span>Sign up with your email and password</span>
+        <form
+          action="
         "
-        onSubmit={handleSubmit}
-      >
-        <FormInput
-          label="Display Name"
-          inputOptions={{
-            type: "text",
-            required: true,
-            onChange: handleChange,
-            name: "displayName",
-            value: displayName,
-          }}
-        />
-        <FormInput
-          label="Email"
-          inputOptions={{
-            type: "email",
-            required: true,
-            onChange: handleChange,
-            name: "email",
-            value: email,
-          }}
-        />
-        <FormInput
-          label="Password"
-          inputOptions={{
-            type: "password",
-            required: true,
-            onChange: handleChange,
-            name: "password",
-            value: password,
-          }}
-        />
-        <FormInput
-          label="Confirm Password"
-          inputOptions={{
-            type: "password",
-            required: true,
-            onChange: handleChange,
-            name: "confirmPassword",
-            value: confirmPassword,
-          }}
-        />
-        <Button buttonType="default" type="submit">
-          Sign Up
-        </Button>
-      </form>
-    </div>
+          onSubmit={handleSubmit}
+        >
+          <FormInput
+            label="Display Name"
+            inputOptions={{
+              type: "text",
+              required: true,
+              onChange: handleChange,
+              name: "displayName",
+              value: displayName,
+            }}
+          />
+          <FormInput
+            label="Email"
+            inputOptions={{
+              type: "email",
+              required: true,
+              onChange: handleChange,
+              name: "email",
+              value: email,
+            }}
+          />
+          <FormInput
+            label="Password"
+            inputOptions={{
+              type: "password",
+              required: true,
+              onChange: handleChange,
+              name: "password",
+              value: password,
+            }}
+          />
+          <FormInput
+            label="Confirm Password"
+            inputOptions={{
+              type: "password",
+              required: true,
+              onChange: handleChange,
+              name: "confirmPassword",
+              value: confirmPassword,
+            }}
+          />
+          <Button buttonType="default" type="submit">
+            Sign Up
+          </Button>
+        </form>
+      </div>
+    </>
   );
 };
 

@@ -15,11 +15,13 @@ const SignIn = () => {
     const userDocRef = await createUserDocumentFromAuth(user);
   };
   return (
-    <div>
-      <h1>SignIN</h1>
-      <SignInForm />
-      <SignUpForm />
-    </div>
+    <>
+      <div>
+        <h1>SignIN</h1>
+        <SignInForm />
+        <SignUpForm />
+      </div>
+    </>
   );
 };
 

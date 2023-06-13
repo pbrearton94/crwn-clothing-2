@@ -57,44 +57,50 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <h2>I already have an account</h2>
-      <span>Sign in with your email and password</span>
-      <form
-        action="
+    <>
+      <div className="sign-up-container">
+        <h2>I already have an account</h2>
+        <span>Sign in with your email and password</span>
+        <form
+          action="
         "
-        onSubmit={handleSubmit}
-      >
-        <FormInput
-          label="Email"
-          inputOptions={{
-            type: "text",
-            required: true,
-            onChange: handleChange,
-            name: "email",
-            value: email,
-          }}
-        />
-        <FormInput
-          label="Password"
-          inputOptions={{
-            type: "password",
-            required: true,
-            onChange: handleChange,
-            name: "password",
-            value: password,
-          }}
-        />
-        <div className="buttons-container">
-          <Button buttonType="default" type="submit">
-            SIGN IN
-          </Button>
-          <Button buttonType="google" type="button" onClick={signInWithGoogle}>
-            GOOGLE SIGN IN
-          </Button>
-        </div>
-      </form>
-    </div>
+          onSubmit={handleSubmit}
+        >
+          <FormInput
+            label="Email"
+            inputOptions={{
+              type: "text",
+              required: true,
+              onChange: handleChange,
+              name: "email",
+              value: email,
+            }}
+          />
+          <FormInput
+            label="Password"
+            inputOptions={{
+              type: "password",
+              required: true,
+              onChange: handleChange,
+              name: "password",
+              value: password,
+            }}
+          />
+          <div className="buttons-container">
+            <Button buttonType="default" type="submit">
+              SIGN IN
+            </Button>
+            <Button
+              buttonType="google"
+              type="button"
+              onClick={signInWithGoogle}
+            >
+              GOOGLE SIGN IN
+            </Button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 
